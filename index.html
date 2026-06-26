@@ -88,6 +88,7 @@
   .confetti i.ci{border-radius:999px;width:9px;height:9px;}
   .confetti i.tr{width:0;height:0;background:none!important;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:10px solid var(--cc);}
   @keyframes fall{0%{opacity:1;transform:translateY(0) rotate(0) scale(1)}80%{opacity:.8}100%{opacity:0;transform:translateY(560px) rotate(720deg) scale(.5)}}
+  .ver{font-size:10px;font-weight:600;color:var(--soft);opacity:.5;text-align:center;width:100%;padding-top:2px;}
 </style>
 </head>
 <body>
@@ -145,9 +146,11 @@
     </div>
     <button class="rw locked" id="storybtn"><span class="big" id="storyemoji">🔒</span><span class="cap">Geschichte</span></button>
   </div>
+  <div class="ver" id="ver"></div>
 </div>
 
 <script>
+const APP_VERSION='2';
 const $=id=>document.getElementById(id);
 const NS='http://www.w3.org/2000/svg';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -377,6 +380,7 @@ function openSettings(){
   sheet.append(step('1. Tag: Minuten','cdStartMin',1));
   sheet.append(step('Pro Tag mehr Min','cdGrowthMin',0));
   sheet.append(el('p',{class:'hint'},'Heute: '+Math.round(targetSec()/60)+' Min trocken bleiben, '+branchCount()+' Abzweigungen.'));
+  sheet.append(el('p',{class:'hint'},'Version '+APP_VERSION));
   sheet.append(el('div',{class:'srow'},
     el('button',{class:'sbtn go',onclick:()=>{closeOverlay();restartCountdown();startCountdown(30);}},'Test (30 Sek)'),
     el('button',{class:'sbtn',onclick:()=>{closeOverlay();restartCountdown();}},'Countdown neu')));
@@ -417,6 +421,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden){refreshHo
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 
 // ---- init ----
+$('ver').textContent='v'+APP_VERSION;
 buildScene();
 $('daypill').textContent='Tag '+(dayIndex()+1);
 if(started())$('startoverlay').style.display='none';
