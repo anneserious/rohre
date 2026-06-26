@@ -1,0 +1,6 @@
+{
+  "_anleitung": "Die App zieht kurze Maus-Videos automatisch aus der Mediathek. Diese Liste ist nur ein optionaler Zusatz/Fallback: in der ARD-Mediathek- oder DieMaus-App ein Video oeffnen -> Teilen -> Link kopieren und hier als Eintrag ergaenzen. typ = 'spot' oder 'sachgeschichte'. kategorie und dauer_s optional. Sachgeschichten ueber 420 s werden ausgeblendet.",
+  "videos": [
+    { "titel": "Beispiel: Warum vibriert das Handy?", "typ": "sachgeschichte", "kategorie": "technik", "dauer_s": 360, "url": "https://www.wdrmaus.de/filme/sachgeschichten/handy_vibrieren.php5" }
+  ]
+}
